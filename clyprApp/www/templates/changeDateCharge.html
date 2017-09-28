@@ -1,0 +1,26 @@
+<ion-view view-title="Search" class="back2-Image">
+  <ion-content  class="app-second-cover">
+    
+     <div class="login-logo">  
+            <img src="../img/logo.png">
+            <h4>Charging</h4>
+        </div>
+    
+    
+    
+    
+     <div ng-if="checkoutForm.card.$invalid" class="messageRed">
+        Error: invalid card number!
+     </div>
+    
+    <form ng-submit="stripeCallback(payment)">
+        <ion-md-input  ng-model="payment.card.number" placeholder="Card Number" highlight-color="balanced"  required></ion-md-input>
+        <ion-md-input ng-model="payment.card.emp_month" placeholder="Expiration Month"   highlight-color="balanced"  required ></ion-md-input>
+        <ion-md-input ng-model="payment.card.exp_year" placeholder="Expiration Year"  highlight-color="balanced"  required ></ion-md-input>
+        <ion-md-input ng-model="payment.card.cvc" placeholder="cvc"  highlight-color="CVC"  required></ion-md-input>
+        <button class="button button-full button-border icon-left button-assertive"  type="submit">Make Payment</button>
+    </form>   
+   
+      
+  </ion-content>
+</ion-view>

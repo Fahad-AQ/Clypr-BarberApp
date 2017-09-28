@@ -1,0 +1,48 @@
+<ion-view view-title="Barber Edit Profile">
+ <ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">Appointments Barber</h1>
+  <div class="buttons">
+    <button class="button button-icon button-clear" ng-click="closeBooking()"><i class="icon ion-close-circled"></i></button>
+  </div>
+</ion-header-bar>
+<ion-content class="app-second-cover">
+  
+   <div class="barberList">
+     <h2 class="bottom-gray" >Order History</h2>
+          <div class="list">
+            
+            <a class="item item-avatar"  ng-repeat="booking in bookingArray" ng-if="booking.barberId == userProfile.userID && booking.appointment == 'done' " >
+                <img ng-show="!booking.userImage" src="../img/loginbg.jpg">
+                <img ng-show="booking.userImage" ng-src="{{booking.userImage}}" width="50" height="50">
+                <h2>{{booking.userName}}</h2>
+                <h2>{{booking.selectedStyle}}</h2>
+                <h2>{{booking.selectedDate | date }}</h2>
+                <p>{{booking.availableTime}}</p>
+                <p>This booking has been done</p>
+                <p> 
+                </p>
+            </a>
+            
+            <a class="item item-avatar"  ng-repeat="booking in bookingArray" ng-if="booking.barberId == userProfile.userID && booking.appointment == 'cencel' " >
+                <img ng-show="!booking.userImage" src="../img/loginbg.jpg">
+                <img ng-show="booking.userImage" ng-src="{{booking.userImage}}" width="50" height="50">
+                <h2>{{booking.userName}}</h2>
+                <h2>{{booking.selectedStyle}}</h2>
+                <h2>{{booking.selectedDate | date }}</h2>
+                <p>{{booking.availableTime}}</p>
+                <p>This booking has been cencel</p>
+                <p> 
+                </p>
+            </a>
+   
+            <a class="item item-avatar"  ng-hide="barberDoneAppointmentWithUser">
+                <img src="../img/loginbg.jpg">
+                <p class="bottom-gray">No appointments have done yet</p>
+            </a>
+
+        </div>
+
+</div>
+  
+  </ion-content>
+</ion-view>

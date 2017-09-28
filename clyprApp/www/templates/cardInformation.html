@@ -1,0 +1,25 @@
+<ion-view view-title="Search" class="back2-Image">
+  <ion-content  class="app-second-cover">
+    
+     <div class="login-logo">  
+            <img src="../img/logo.png">
+            <h4>Card Information</h4>
+        </div>
+    
+    
+    
+    
+     <div ng-if="userCard" class="messageRed">
+        Card Information Already Edit , you can re edit card information by below form.
+     </div>
+    
+    <form name="cardInfo" ng-submit="addedCardInformation(card)">
+        <ion-md-input type='number'  name="cardNumber" ng-model="card.cardNumber"  placeholder="Card Number" highlight-color="balanced"  required></ion-md-input>
+        <ion-md-input type='number'  name="expMonth"  ng-model="card.expMonth" placeholder="Expiration Month"   highlight-color="balanced"  required ></ion-md-input>
+        <ion-md-input type='number'  name="expYear"  ng-model="card.expYear"   placeholder="Expiration Year"  highlight-color="balanced"  required ></ion-md-input>
+        <button class="button button-full button-border icon-left button-assertive" ng-disabled="!cardInfo.$valid"  type="submit">Make Payment</button>
+    </form>   
+   
+      
+  </ion-content>
+</ion-view>

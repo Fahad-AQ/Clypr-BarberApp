@@ -1,0 +1,38 @@
+<ion-view view-title="Barber Reviews">
+ <ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">Booking Barber</h1>
+  <div class="buttons">
+    <button class="button button-icon button-clear" ng-click="closeBooking()"><i class="icon ion-close-circled"></i></button>
+  </div>
+</ion-header-bar>
+<ion-content class="app-second-cover">
+    <div class="barberProfileReviews">
+      <h2 class="bottom-gray">Reviews</h2>
+       <div class="list">
+            <a  ng-disabled="true" class="item item-avatar"  ng-repeat="review in reviewsList">
+                <img ng-show="!review.userImage" src="../img/loginbg.jpg">
+                <img ng-show="review.userImage" ng-src="{{review.userImage}}" width="50" height="50">
+                <h2><rating readonly="true" ng-model="review.rate" max="review.rate"></rating></h2>
+                <p class="bottom-gray">{{review.name}} : <b>{{review.comment}}</b> <span style="float: right">{{review.date | date }}</span></p>
+            </a>
+            <a class="item item-avatar" ng-if="reviewsList.length == 0">
+                <img src="../img/loginbg.jpg" >
+                <p class="bottom-gray">No Comment Added Yet</p>
+            </a>
+        </div>
+ 
+      <div class="padding" >
+        Give Rating: <rating ng-model="rating.rate" max="rating.max"></rating>
+      </div>
+          <br />
+        <div class="list">
+               <ion-md-input placeholder="Comment" highlight-color="balanced" type="text"  ng-model="rating.commentUser" required></ion-md-input>
+        </div>
+        
+        <div class="padding">
+            <button class="button button-small button-dark" ng-click="addReview(rating)">Add Comment</button>
+        </div>
+        
+      </div>
+  </ion-content>
+</ion-view>

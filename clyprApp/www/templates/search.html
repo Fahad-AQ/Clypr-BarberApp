@@ -1,0 +1,37 @@
+<ion-view view-title="Search" class="back2-Image">
+  <ion-content  class="app-second-cover">
+	<div class="list">
+	  <div class="item item-input-inset">
+	    <label class="item-input-wrapper">
+         <i class="icon ion-search placeholder-icon"></i>
+	      <input type="text" ng-model="search" placeholder="Search here">
+	    </label>
+	  </div>
+	</div>
+ <div class="barberList">
+     <h2 class="bottom-gray" >Barbers</h2>
+          <div class="list">
+            
+            <a class="item item-avatar"  ui-sref="app.barberProfile({barberId : barber.userID})" ng-repeat="barber in barberList | filter : search " ng-show="!barber.image">
+                <img src="../img/loginbg.jpg">
+                <h2>{{barber.name | uppercase}}</h2>
+                <p class="bottom-gray">{{barber.email | uppercase}}</p>
+            </a>
+            <a class="item item-avatar"  ui-sref="app.barberProfile({barberId : barber.userID})" ng-repeat="barber in barberList | filter : search " ng-show="barber.image">
+                <img ng-src="{{barber.image}}">
+                <h2>{{barber.name | uppercase}}</h2>
+                <p class="bottom-gray">{{barber.email | uppercase}}</p>
+            </a>
+                      
+            <a class="item item-avatar" ng-if="barberList.length == 0">
+                <img src="../img/loginbg.jpg">
+                <p class="bottom-gray">No Barber Added Yet</p>
+            </a>
+
+        </div>
+
+</div>
+  
+
+  </ion-content>
+</ion-view>

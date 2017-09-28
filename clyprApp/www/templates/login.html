@@ -1,0 +1,23 @@
+<ion-view view-title="Customer Login " class="back-Image">
+  <ion-nav-bar class="bar-dark" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}" align-title="left">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+    <ion-content class="app-cover loginpage">
+         <div class="login-logo">  
+            <img src="../img/logo.png">
+            <h4>LOGIN HERE</h4>
+        </div>
+        <div class="list">
+            <ion-md-input placeholder="Customer Email" highlight-color="balanced" type="email"  ng-model="loginData.email" required></ion-md-input>
+            <ion-md-input placeholder="Customer Password" highlight-color="energized" type="password"  ng-model="loginData.password" required></ion-md-input>
+        </div>
+        <div class="padding">
+            <button class="button button-full button-assertive ink" ng-click="doLogin(loginData)">Sign In</button>
+        </div>
+        <div class="button-bar social-login">
+            <button class="button button-small button-border icon-left ion-social-google button-assertive-900" ng-click="googlePlusLogin()">Google+</button>
+            <button class="button button-small button-border icon-left ion-social-facebook button-calm-900" ng-click="facebookSignIn()"  >Facebook</button>
+            <button class="button button-small button-border icon-left button-positive-900" ui-sref="register">SignUp</button>
+        </div> 
+  </ion-content>
+</ion-view>

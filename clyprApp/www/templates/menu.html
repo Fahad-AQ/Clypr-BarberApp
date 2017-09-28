@@ -1,0 +1,73 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-dark" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}" align-title="left">
+            <ion-nav-back-button class="no-text">
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-android-more-vertical" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+                <ion-nav-buttons side="right">
+                   <button class="button button-icon button-clear ion-home" ng-click="goHome(userRef.$id)">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="fabContent"></ion-nav-view>
+        <ion-nav-view name="menuContent" ng-class="{expanded: isExpanded}" ></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+        <ion-header-bar class="dark-bg expanded">
+            <div class="side_Menu">
+               <img ng-show="!userRef.image" class="imageDashboard" src="../img/loginbg.jpg" width="100" height="100">
+               <img ng-show="userRef.image" class="imageDashboard" ng-src="{{userRef.image}}" width="100" height="100">
+               <p class="userName">{{userRef.name}}</p>
+            </div>
+            
+          <!--  <div class="avatar-align-center">
+                <h2 ng-show="!userRef.image" class="avatar" style="background: url('../img/loginbg.jpg') center; background-size: cover;">
+                 <span>{{userRef.name}}</span></h2>
+                <h2 ng-show="userRef.image" class="avatar" ng-style="background: url({{userRef.image}}) center; background-size: cover;">
+                <span>{{userRef.name}}</span></h2>
+            </div>-->
+        </ion-header-bar>
+        <ion-content class="stable-bg has-expanded-header">
+            <ion-list ng-if="userRef.type == 'barber' ">
+                <ion-item nav-clear menu-close ui-sref="app.editBarberProfile({barberId : userProfile.userID })">
+                  Profile Setting
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.orderHistory({userId : userProfile.userID })">
+                  Order History
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.barberAppointments({userId : userProfile.userID })">
+                  Upcomming Appointments
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.search">
+                  Search
+                </ion-item>
+
+                <ion-item nav-clear menu-close  ng-click="doLogOut()">
+                  Sign Out
+                </ion-item>
+            </ion-list>
+            
+            <ion-list ng-if="userRef.type != 'barber' ">
+               <ion-item nav-clear menu-close ui-sref="app.editUserProfile({userId : userProfile.userID })">
+                  Profile Setting
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.appointmentHistory({userId : userProfile.userID })">
+                 Appointments History
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.currentAppointment({userId : userProfile.userID })">
+                 Current Appointments
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.search">
+                  Search
+                </ion-item>
+                <ion-item nav-clear menu-close  ng-click="doLogOut()">
+                  Sign Out
+                </ion-item>
+            </ion-list>
+            
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

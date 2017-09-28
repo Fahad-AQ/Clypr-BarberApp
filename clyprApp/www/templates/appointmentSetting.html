@@ -1,0 +1,64 @@
+<ion-view view-title="Barber Edit Profile">
+ <ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">Booking Barber</h1>
+  <div class="buttons">
+    <button class="button button-icon button-clear" ng-click="closeBooking()"><i class="icon ion-close-circled"></i></button>
+  </div>
+</ion-header-bar>
+<ion-content class="app-second-cover">
+    <div class="barberProfileEdit">  
+           <div class="list">
+             <h4 class="h4"> Added new Style</h4>
+              <div class="item item-input-inset">     
+                <label class="item-input-wrapper">
+                   <i class="icon ion-ios-people placeholder-icon"></i>
+                  <input class="input-appointment" type="text" ng-model="userHairCutting.style" required placeholder="Style" >
+                </label>
+              </div>
+                <div class="item item-input-inset">     
+                <label class="item-input-wrapper">
+                   <i class="icon ion-ios-people placeholder-icon"></i>
+                  <input class="input-appointment" type="number" ng-model="userHairCutting.stylePrice" required placeholder="price" >
+                </label>
+                <button class="button button-fab button-positive icon ion-plus" ng-click="addCutting(userHairCutting)">
+                </button>
+              </div>
+              <a class="h4" ng-click="viewStyleList()" ng-if="barberObject.cuttingStyle.length != 0 ">View All Style</a>
+              <a class="h4" ng-if="barberObject.cuttingStyle.length == 0 " >No Style Added Yet</a>
+            </div>
+           
+       <div class="margin">
+           <h4 class="h4">Set Appointment Time </h4>
+             <h6 class="h6"><b>Note</b> : Start Time must be grater then and equal 9 With AM and End Time must be less then and equal 6 With PM</h6>
+             <div class="list" >
+              <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                   <i class="icon ion-speedometer placeholder-icon"></i>
+                  <input type="number" min="1" max="12" ng-model="barberBooking.startTime" required placeholder="Start" >
+                </label>
+                <select class="soflow-color" ng-model="barberBooking.startTimeAMPM">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
+             <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                   <i class="icon ion-speedometer placeholder-icon"></i>
+                  <input  type="number" min="1" max="12"  ng-model="barberBooking.endTime" required placeholder="End" >
+                </label>
+                <select class="soflow-color" ng-model="barberBooking.endTimeAMPM" >
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
+            </div>
+      
+        </div>
+        
+        <div class="padding">
+                <button class="button button-full button-positive" ng-click="saveSetting(barberBooking)">Save Settings</button>
+            </div>
+      </div>
+
+  </ion-content>
+</ion-view>

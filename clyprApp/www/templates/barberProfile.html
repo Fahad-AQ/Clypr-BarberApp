@@ -1,0 +1,60 @@
+<ion-view view-title="Barber" >
+   <ion-content class="app-third-cover">    
+     <div>  
+         <div class="barberProfile">
+             <div class="navBar-BarberProfile">
+                  <span>{{barberObject.name}}</span>
+            </div>
+                <div class="box-BarberProfile">
+  
+                    <div class="image">   
+                         <h4>
+                            <a ng-click="showMap()">
+                                 <img  ng-show="!barberObject.image" src="../img/loginbg.jpg"  width="100" height="100" alt="barber" />
+                                 <img ng-show="barberObject.image" ng-src="{{barberObject.image}}"  width="100" height="100" alt="barber" />
+                                 <a ng-if="barberObject.type == 'barber' && userProfile.userID == barberUid" class="button button-fab button-assertive icon ion-compose" ui-sref="app.editBarberProfile({barberId : barberObject.userID})">Edit</a>
+                             <br />
+                             {{barberObject.name}}
+                             <br />
+                             <span ng-if="barberObject.location">
+                                {{barberObject.location.from}}
+                             </span>
+                             <span ng-if="!barberObject.location">
+                                No Location Set Yet
+                             </span>
+                             </a>
+                         </h4>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-BarberProfile">
+                    <h5> 
+                        <a ui-sref="app.reviews({barberId : barberObject.userID})">
+                           <rating readonly="true" ng-model="rating.rate" max="rating.max"></rating>
+                           {{reviewsList.length}} Reviews
+                         </a>
+                        <!--<a class="button icon icon-right ion-locked button-clear " ui-sref="app.booking({barberId : barberUid})">0 Reviews</a>                     -->
+                    </h5>         
+                </div>
+             
+               <div class="box-BarberProfile" ng-if="userProfile.type != 'barber' && barberObject.cuttingStyle">
+                   
+                     <h5>
+                        <a class="button icon icon-left ion-calendar button-clear" ui-sref="app.booking({barberId : barberObject.userID , userId : userProfile.userID })"> Book Appointment</a>
+                    </h5>         
+                    
+                </div>
+         </div>
+
+        <div ng-show="barberObject.location" >
+                <div  class="barberProfileMap"  id="googleMap" >
+                
+                </div> 
+        </div>
+         
+         
+     </div>
+     
+    </ion-content>
+</ion-view>

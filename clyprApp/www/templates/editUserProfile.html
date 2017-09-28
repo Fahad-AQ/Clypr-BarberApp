@@ -1,0 +1,50 @@
+<ion-view view-title="Barber Edit Profile">
+ <ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">Booking Barber</h1>
+  <div class="buttons">
+    <button class="button button-icon button-clear" ng-click="closeBooking()"><i class="icon ion-close-circled"></i></button>
+  </div>
+</ion-header-bar>
+<ion-content class="app-second-cover">
+    <div class="barberProfileEdit">  
+         
+
+           <div class="editImage">
+                    <div class="image">   
+                         <h4>
+                            <img ng-show="!userObject.image" src="../img/loginbg.jpg"  width="100" height="100" alt="user" />
+                            <img ng-show="userObject.image" ng-src="{{userObject.image}}"  width="100" height="100" alt="user" />
+                            <button class="button button-fab button-assertive icon ion-compose" ng-click="pickImage()"></button>
+                             <br />
+                             {{userObject.name}}
+                         </h4>
+                    </div>
+                    
+             </div>
+                
+      
+           <div class="list">
+             
+            
+            
+              <h4 class="h4"> Basic Info</h4>
+              <div class="item item-divider">
+                Name : {{userObject.name}}
+              </div>
+              <div class="item item-divider">
+                Email : {{userObject.email}}
+              </div>
+              <div class="item item-divider">
+              </div>
+           </div>
+           
+       <div class="padding">
+                <button class="button button-full button-positive" ui-sref="app.cardInformation({userId : userProfile.userID })">Set Card Information</button>
+        </div>
+    
+
+        
+      </div>
+
+  </ion-content>
+</ion-view>

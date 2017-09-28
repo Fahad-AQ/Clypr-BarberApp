@@ -1,0 +1,25 @@
+<ion-view view-title="Customer Register">
+   <ion-nav-bar class="bar-dark">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+      <ion-content class="app-cover">
+        <div class="hero no-header flat">
+           <div class="login-logo">  
+                <img src="../img/logo.png">
+                <h4>REGISTER HERE</h4>
+            </div>
+        </div>
+        <div class="list">
+            <ion-md-input placeholder="Customer Username" highlight-color="balanced" type="text" ng-model="registerData.username" required></ion-md-input>
+            <ion-md-input placeholder="Customer Email" highlight-color="balanced" type="email" ng-model="registerData.email" required></ion-md-input>
+            <ion-md-input placeholder="Customer Password" highlight-color="energized" type="password" ng-model="registerData.password" required></ion-md-input>
+        </div>
+        <div class="padding">
+            <button  class="button button-full button-border icon-left button-assertive" ng-click="coustomerRegister(registerData)">Register</button>
+        </div>
+        <div class="button-bar social-login">
+            <button class="button button-small button-border icon-left button-positive" ui-sref="customer">Already have account?</button>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

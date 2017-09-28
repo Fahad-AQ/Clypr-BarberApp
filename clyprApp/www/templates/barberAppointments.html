@@ -1,0 +1,38 @@
+<ion-view view-title="Barber Edit Profile">
+ <ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">Appointments Barber</h1>
+  <div class="buttons">
+    <button class="button button-icon button-clear" ng-click="closeBooking()"><i class="icon ion-close-circled"></i></button>
+  </div>
+</ion-header-bar>
+<ion-content class="app-second-cover">
+  
+   <div class="barberList">
+     <h2 class="bottom-gray" >Upcomming appointment</h2>
+          <div class="list">
+            
+            <a class="item item-avatar"  ng-repeat="booking in bookingArray" ng-if="booking.barberId == userProfile.userID && booking.appointment == 'isNotDone' " >
+               <img ng-show="!booking.userImage" src="../img/loginbg.jpg">
+               <img ng-show="booking.userImage" ng-src="{{booking.userImage}}" width="50" height="50">
+                <h2>{{booking.userName}}</h2>
+                <h2>{{booking.selectedStyle}}</h2>
+                <h2>{{booking.selectedDate | date }}</h2>
+                <p>{{booking.availableTime}}</p>
+                <p> 
+                 <div class="padding">
+                    <button class="button button-small button-positive ink" ng-click="doneAppointment(booking)">done</button>
+                 </div>
+                </p>
+            </a>
+   
+            <a class="item item-avatar" ng-hide="barberHaveBooking">
+                <img src="../img/loginbg.jpg">
+                <p class="bottom-gray">No Booking have added yet</p>
+            </a>
+
+        </div>
+
+</div>
+  
+  </ion-content>
+</ion-view>

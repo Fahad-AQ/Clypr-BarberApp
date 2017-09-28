@@ -1,0 +1,97 @@
+<ion-view view-title="Clypr Home" >
+   <ion-content class="app-second-cover">
+         <div ng-if="userProfile.type != 'barber' ">
+             <div class="barberList2" >
+               <h3 class="bottom-gray" >Search Barbers</h3>
+ 
+               <div class="list barber-list">
+                   <a class="item item-avatar" ng-repeat="barber in barbersArray | filter : search "  ui-sref="app.barberProfile({barberId : barber.userID})" ng-show="!barber.image">
+                       <img src="../img/loginbg.jpg">
+                      <h2>{{barber.name | uppercase}}</h2>
+                      <p class="bottom-gray">{{barber.email | uppercase}}</p>
+                   </a>
+                     <a class="item item-avatar" ng-repeat="barber in barbersArray | filter : search "  ui-sref="app.barberProfile({barberId : barber.userID})" ng-show="barber.image">
+                       <img ng-show="barber.image" ng-src="{{barber.image}}" width="50" height="50">
+                      <h2>{{barber.name | uppercase}}</h2>
+                      <p class="bottom-gray">{{barber.email | uppercase}}</p>
+                   </a>
+                      
+                  <a class="item item-avatar" ng-if="barbersArray.length == 0">
+                      <img src="../img/loginbg.jpg">
+                      <p class="bottom-gray">No Barber Added Yet</p>
+                  </a>
+                   
+                
+                </div>
+                   
+               </div>
+               
+          <div class="upcommingAppointments"> 
+                  <h2 class="bottom-gray" >Upcomming Appts.</h2>
+                    <div class="row header">
+                    <div class="col">Date</div>
+                    <div class="col">Time</div>
+                    <div class="col">Barber</div>
+                    </div>
+                   <div class="row" ng-repeat="barbarBooking in barbersBookedArray" ng-if="barbarBooking.appointment == 'isNotDone' ">
+                      <div class="col">Appointment pending on {{barbarBooking.selectedDate | date}}</div>
+                      <div class="col">Appointment pending on  <br /> {{barbarBooking.availableTime}}</div>
+                      <div class="col">{{barbarBooking.barberName}}
+                          <br />                       
+                      <button class="button button-small button-assertive ink" ng-click="cencelAppointment(barbarBooking)">Cencel</button>
+                      <button class="button button-small button-positive ink" ng-click="sendTip(barbarBooking)">Give Tip</button>
+
+                    </div>
+                      </div>
+                      
+                     <div class="row" ng-hide="userHaveBooking">
+                      <div class="col">-</div>
+                      <div class="col">-</div>
+                      <div class="col">-</div>
+                     </div>
+                  </div>
+
+                 
+                   
+            <div class="reBooking"> 
+                  <p><button class="button button-small button-border icon-left button-assertive ink" ui-sref="app.booking({barberId : objectBarber.userID , userId : userProfile.userID })">Booked again</button></p>
+              </div> 
+       </div> 
+         
+ 
+         <div  ng-if="userProfile.type == 'barber' ">
+
+                <div class="upcommingAppointments2"> 
+                  <h2 class="bottom-gray" >Upcomming Appts.</h2>
+                    <div class="row header">
+                    <div class="col">Time</div>
+                    <div class="col">Coustomer</div>
+                    </div>
+                   <div class="row bottom-gray" ng-repeat="barbarBooking in barbersBookedArray" ng-if="barbarBooking.barberId == userProfile.userID && barbarBooking.appointment == 'isNotDone' ">
+                    <div class="col">Appointment pending on  <br /> {{barbarBooking.availableTime}}</div>
+                    <div class="col ">{{barbarBooking.userName}}
+                      <br />
+                      <button class="button button-small button-assertive ink" ng-click="cencelByAppointment(barbarBooking)">Cencel</button>                       
+                      <button class="button button-small button-positive ink" ng-click="doneAppointment(barbarBooking)">Appt done</button>
+                    </div>
+                    </div>
+                    <div class="row" ng-hide="barberHaveBooking">
+                      <div class="col">-</div>
+                      <div class="col">-</div>
+                   </div>
+                  </div> 
+              <div class="revenue"> 
+                  <h2 class="bottom-gray" >Revenue</h2>
+                    <div class="row header">
+                    <div class="col">Day : 0</div>
+                    <div class="col">Month : 0</div>
+                    </div>
+                    <div class="row header">
+                    <div class="col">Week : 0</div>
+                    <div class="col">Year : 0</div>
+                    </div>
+                  
+                  </div> 
+         </div>
+  </ion-content>
+</ion-view>

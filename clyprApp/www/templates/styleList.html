@@ -1,0 +1,35 @@
+<ion-modal-view view-title="Barber Edit Profile">
+ <ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">Barbers Style-List</h1>
+  <div class="buttons">
+    <button class="button button-icon button-clear" ng-click="closeModal()"><i class="icon ion-close-circled"></i></button>
+  </div>
+</ion-header-bar>
+  <ion-content class="app-second-cover">
+ <div class="list">
+	  <div class="item item-input-inset">
+	    <label class="item-input-wrapper">
+         <i class="icon ion-search placeholder-icon"></i>
+	      <input type="text" ng-model="searchStyle" placeholder="Search Style">
+	    </label>
+	  </div>
+	</div>
+ <div class="barberList">
+     <h2 class="bottom-gray" >Styles</h2>
+          <div class="list">
+                 <div>
+                    <span ng-class="{messageGreen: style.message == 'Removed Successfully'}" ng-show="style.message == 'Removed Successfully' ">{{style.message}}</span><span ng-class="{messageRed: style.message == 'Removed Failed'}" ng-show="style.message == 'Removed Failed' ">{{style.message}}</span>
+                 </div>
+                  <div class="item item-button-right" ng-repeat="style in barberObject.cuttingStyle | filter : searchStyle ">
+                  {{style.styleName}}
+                    <button class="button button-small button-assertive " ng-click="removeStyle(style)">
+                      Delete
+                    </button>
+                    <hr />
+                  </div>
+                  
+            </div>
+</div>
+  
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,80 @@
+<ion-view view-title="Barber Booking">
+ <ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">Booking Barber</h1>
+  <div class="buttons">
+    <button class="button button-icon button-clear" ng-click="closeBooking()"><i class="icon ion-close-circled"></i></button>
+  </div>
+</ion-header-bar>
+      <ion-content class="app-second-cover">
+           <div  ng-if="userRef.type != 'barber' ">
+             <div class="barberBooking"  >
+                 <div>
+                      <h1 class="bottom-gray">Booking Barber</h1>
+                      
+                      <div class="bottom-gray" > Select Style and Date With Time </div>
+          
+                                  <label class = "item item-input item-select item-dark">
+                                    
+                                    <div class = "input-label">
+                                      Select Style
+                                    </div>
+                                    
+                                    <select name="selectStyle" id="selectStyle" ng-model="userHairCutting.style" ng-change="changeStylePrice(userHairCutting.style)" ng-if="barberObject.cuttingStyle != null || barberObject.cuttingStyle != undefined" >
+                                      <option selected value="Kindly select Style" selected>Please select a style</option>
+                                      <option ng-repeat="style in barberObject.cuttingStyle" value="{{style.styleName}}">{{style.styleName | uppercase }} &nbsp;</option>
+                                    </select>
+                                  
+                                    <select  ng-model="userHairCutting.style" ng-if="barberObject.cuttingStyle == null || barberObject.cuttingStyle == undefined">
+                                    <option selected value="default">No Style Added</option>
+                                    </select>
+                                    
+                                  </label>           
+                          
+                      <div class="padding">
+                           <div>
+                            Selected Hair cutting style is for your Hair cutting <br /> Style Price is : {{(barberStylePrice) ? barberStylePrice : "Please Select Style"}}
+                          </div>
+                          
+                          <br />  
+                          
+                      <ion-md-input placeholder="Barber Tips" highlight-color="energized" type="number"  ng-model="tip" required></ion-md-input>
+                  </div>    
+              </div>    
+
+                <div class="padding">       
+
+                        <button class="button button-small button-dark" ng-click="openDatePicker()">Pick Date </button>
+                        
+                          <br />
+             
+                          <div> Selected Date is for your Hair cutting <br />  Date is : {{convertDate(userHairCutting.selectedDate)}} </div>
+                      </div>
+                      
+                      <div class="time-Selection">
+                             <span ng-repeat="time in barberObject.setTimeBooking">
+                          
+                                <button class="button button-balanced" ng-hide="getTimeFunction(userHairCutting.selectedDate,time.availableTimes)" ng-click="addBooking(time.availableTimes,tip)">
+                                {{time.availableTimes}} <span > Available</span>
+                                </button>
+                                
+                               <button class="button button-balanced" ng-show="getTimeFunction(userHairCutting.selectedDate,time.availableTimes)" ng-click="alreadyBooked()">
+                                {{time.availableTimes}} <span > Booked</span>
+                                </button>
+                            
+                            </span>   
+                                  
+                      </div> 
+                      
+                      <div class="time-Selection" ng-if="!barberObject.setTimeBooking">
+                             <span class="messageRed"> 
+                                set up time otherwise no booking will be done
+                             </span>                          
+                      </div> 
+                                  
+              </div>
+         </div>
+         <div ng-if="userRef.type == 'barber' "  class="barberBooking"  >
+           <h4 style="padding : 50px;color : red"> Barber does not set the avaibility time and booking </h4>         
+         </div>
+       </ion-content>
+</ion-view>
